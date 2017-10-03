@@ -2,9 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../sass/main.sass';
 
+function color(value) {
+  return (value === 'X') ? 'blue' : 'red';
+}
+
 const Square = ({ value, inactive, onClick }) => (
   <div className={inactive ? 'square inactive' : 'square'} onClick={onClick}>
-    {value}
+    <span style={{ color: color(value) }}>{value}</span>
   </div>
   );
 

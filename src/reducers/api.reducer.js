@@ -8,14 +8,12 @@ export default function (state = initialState.api, action) {
       boardPlay: action.boardPlay,
       player: state.player === 'X' ? 'O' : 'X',
       board: updateObjectInArray(state.board, {
-        index: action.boardPlay,
-        item: updateObjectInArray(state.board[action.boardPlay], {
-          index: action.squarePlay,
-          item: {
-            value: state.player,
-            inactive: true
-          }
-        })
+        squareIndex: action.squarePlay,
+        boardIndex: action.boardPlay,
+        item: {
+          value: action.player,
+          inactive: true
+        }
       })
     };
   }
@@ -23,17 +21,22 @@ export default function (state = initialState.api, action) {
   return state;
 }
 
-function updateObjectInArray(array, action) {
-    return array.map( (item, index) => {
-        if(index !== action.index) {
-            // This isn't the item we care about - keep it as-is
-            return item;
-        }
 
-        // Otherwise, this is the one we want - return an updated value
-        return {
-            ...item,
-            ...action.item
-        };
+function updateObjectInArray(boards, action) {
+  console.log(action);
+  return boards.map((board, boardIndex) => {
+    if (boardIndex !== action.boardIndex) {
+      return board;
+    }
+    return board.map((square, squareIndex) => {
+      if (squareIndex !== action.squareIndex) {
+        return square;
+      }
+
+      return {
+        ...square,
+        ...action.item
+      };
     });
+  });
 }

@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as apiActions from '../actions/api.actions';
 import Board from './Board';
+import '../sass/main.sass';
 
 // name actions BLANK_PLAY
 // reducer listens to plays to check if there's a winner
@@ -20,21 +21,66 @@ class Dashboard extends Component {
   }
 
   playMade(index, squareIndex) {
-    this.props.actions.playSquare(index, squareIndex, this.props.board.player);
+    console.log(this.props);
+    this.props.actions.playSquare(index, squareIndex, this.props.api.player);
     console.log(index);
     console.log(squareIndex);
   }
 
   render() {
     return (
-      <div>
-        { this.props.board.map((b, boardIdx) => (
+      <div className="column">
+        <div className="row">
           <Board
-            squares={b}
-            squareIndex={1}
-            onClick={idx => this.playMade(idx, boardIdx)}
+            squares={this.props.board[0]}
+            squareIndex={0}
+            onClick={idx => this.playMade(idx, 0)}
           />
-        ))}
+          <Board
+            squares={this.props.board[1]}
+            squareIndex={1}
+            onClick={idx => this.playMade(idx, 1)}
+          />
+          <Board
+            squares={this.props.board[2]}
+            squareIndex={2}
+            onClick={idx => this.playMade(idx, 2)}
+          />
+        </div>
+        <div className="row">
+          <Board
+            squares={this.props.board[3]}
+            squareIndex={3}
+            onClick={idx => this.playMade(idx, 3)}
+          />
+          <Board
+            squares={this.props.board[4]}
+            squareIndex={4}
+            onClick={idx => this.playMade(idx, 4)}
+          />
+          <Board
+            squares={this.props.board[5]}
+            squareIndex={5}
+            onClick={idx => this.playMade(idx, 5)}
+          />
+        </div>
+        <div className="row">
+          <Board
+            squares={this.props.board[6]}
+            squareIndex={6}
+            onClick={idx => this.playMade(idx, 6)}
+          />
+          <Board
+            squares={this.props.board[7]}
+            squareIndex={7}
+            onClick={idx => this.playMade(idx, 7)}
+          />
+          <Board
+            squares={this.props.board[8]}
+            squareIndex={8}
+            onClick={idx => this.playMade(idx, 8)}
+          />
+        </div>
       </div>
     );
   }
@@ -42,12 +88,14 @@ class Dashboard extends Component {
 
 Dashboard.propTypes = {
   board: PropTypes.array.isRequired,
+  api: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
   return {
     board: state.api.board,
+    api: state.api
   };
 }
 

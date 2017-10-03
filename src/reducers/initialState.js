@@ -21,7 +21,6 @@ function createBoard() {
 export default {
   api: {
     board: createBoard(),
-    squares: createBoard()[0],
     play: '',
     player: 'X'
   }
