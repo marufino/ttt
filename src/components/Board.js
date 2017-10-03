@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import '../sass/main.sass';
 import Square from './Square';
 
-const Board = ({ squares, squareIndex, inactive, onClick }) => (
-  <div className="board">
+const Board = ({ squares, activeBoard, onClick }) => (
+  <div className={activeBoard ? 'activeBoard' : 'inactive board'}>
     <div className="column">
       <div className="row">
         <Square
@@ -72,9 +72,8 @@ const Board = ({ squares, squareIndex, inactive, onClick }) => (
 
 Board.propTypes = {
   squares: PropTypes.array.isRequired,
-  squareIndex: PropTypes.number,
-  inactive: PropTypes.bool,
-  onClick: PropTypes.func
+  activeBoard: PropTypes.number.isRequired,
+  onClick: PropTypes.func.isRequired
 };
 
 export default Board;
