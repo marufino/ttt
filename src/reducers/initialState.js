@@ -22,6 +22,7 @@ export default {
   api: {
     board: createBoard(),
     play: '',
-    player: 'X'
+    player: 'X',
+    activeBoard: 1
   }
 };

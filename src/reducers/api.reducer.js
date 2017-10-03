@@ -14,7 +14,8 @@ export default function (state = initialState.api, action) {
           value: action.player,
           inactive: true
         }
-      })
+      }),
+      activeBoard: action.squarePlay
     };
   }
 

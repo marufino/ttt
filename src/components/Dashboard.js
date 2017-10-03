@@ -21,65 +21,84 @@ class Dashboard extends Component {
   }
 
   playMade(index, squareIndex) {
-    console.log(this.props);
     this.props.actions.playSquare(index, squareIndex, this.props.api.player);
     console.log(index);
     console.log(squareIndex);
   }
 
   render() {
+    const { activeBoard } = this.props.api;
+    console.log(activeBoard);
     return (
       <div className="column">
         <div className="row">
-          <Board
-            squares={this.props.board[0]}
-            squareIndex={0}
-            onClick={idx => this.playMade(idx, 0)}
-          />
-          <Board
-            squares={this.props.board[1]}
-            squareIndex={1}
-            onClick={idx => this.playMade(idx, 1)}
-          />
-          <Board
-            squares={this.props.board[2]}
-            squareIndex={2}
-            onClick={idx => this.playMade(idx, 2)}
-          />
+          <div className={activeBoard === 0 ? 'activeBoard' : 'inactive'}>
+            <Board
+              squares={this.props.board[0]}
+              squareIndex={0}
+              onClick={idx => this.playMade(idx, 0)}
+            />
+          </div>
+          <div className={activeBoard === 1 ? 'activeBoard' : 'inactive'}>
+            <Board
+              squares={this.props.board[1]}
+              squareIndex={1}
+              onClick={idx => this.playMade(idx, 1)}
+            />
+          </div>
+          <div className={activeBoard === 2 ? 'activeBoard' : 'inactive'}>
+            <Board
+              squares={this.props.board[2]}
+              squareIndex={2}
+              onClick={idx => this.playMade(idx, 2)}
+            />
+          </div>
         </div>
         <div className="row">
-          <Board
-            squares={this.props.board[3]}
-            squareIndex={3}
-            onClick={idx => this.playMade(idx, 3)}
-          />
-          <Board
-            squares={this.props.board[4]}
-            squareIndex={4}
-            onClick={idx => this.playMade(idx, 4)}
-          />
-          <Board
-            squares={this.props.board[5]}
-            squareIndex={5}
-            onClick={idx => this.playMade(idx, 5)}
-          />
+          <div className={activeBoard === 3 ? 'activeBoard' : 'inactive'}>
+            <Board
+              squares={this.props.board[3]}
+              squareIndex={3}
+              onClick={idx => this.playMade(idx, 3)}
+            />
+          </div>
+          <div className={activeBoard === 4 ? 'activeBoard' : 'inactive'}>
+            <Board
+              squares={this.props.board[4]}
+              squareIndex={4}
+              onClick={idx => this.playMade(idx, 4)}
+            />
+          </div>
+          <div className={activeBoard === 5 ? 'activeBoard' : 'inactive'}>
+            <Board
+              squares={this.props.board[5]}
+              squareIndex={5}
+              onClick={idx => this.playMade(idx, 5)}
+            />
+          </div>
         </div>
         <div className="row">
-          <Board
-            squares={this.props.board[6]}
-            squareIndex={6}
-            onClick={idx => this.playMade(idx, 6)}
-          />
-          <Board
-            squares={this.props.board[7]}
-            squareIndex={7}
-            onClick={idx => this.playMade(idx, 7)}
-          />
-          <Board
-            squares={this.props.board[8]}
-            squareIndex={8}
-            onClick={idx => this.playMade(idx, 8)}
-          />
+          <div className={activeBoard === 6 ? 'activeBoard' : 'inactive'}>
+            <Board
+              squares={this.props.board[6]}
+              squareIndex={6}
+              onClick={idx => this.playMade(idx, 6)}
+            />
+          </div>
+          <div className={activeBoard === 7 ? 'activeBoard' : 'inactive'}>
+            <Board
+              squares={this.props.board[7]}
+              squareIndex={7}
+              onClick={idx => this.playMade(idx, 7)}
+            />
+          </div>
+          <div className={activeBoard === 8 ? 'activeBoard' : 'inactive'}>
+            <Board
+              squares={this.props.board[8]}
+              squareIndex={8}
+              onClick={idx => this.playMade(idx, 8)}
+            />
+          </div>
         </div>
       </div>
     );
