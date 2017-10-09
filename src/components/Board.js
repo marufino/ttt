@@ -3,8 +3,29 @@ import PropTypes from 'prop-types';
 import '../sass/main.sass';
 import Square from './Square';
 
-const Board = ({ squares, activeBoard, onClick }) => (
+function boardWonStyle(boardWon) {
+  let boardWonStyleString = '';
+
+  if (boardWon !== '') {
+    boardWonStyleString = 'finishedBoard';
+  }
+
+  if (boardWon === 'X') {
+    boardWonStyleString = 'finishedBoard blueTransparent';
+  }
+
+  if (boardWon === 'O') {
+    boardWonStyleString = 'finishedBoard redTransparent';
+  }
+
+  return boardWonStyleString;
+}
+
+const Board = ({ squares, activeBoard, boardWon, onClick }) => (
   <div className={activeBoard ? 'activeBoard' : 'inactive board'}>
+    <div className={boardWonStyle(boardWon)}>
+      {boardWon}
+    </div>
     <div className="column">
       <div className="row">
         <Square
@@ -73,6 +94,7 @@ const Board = ({ squares, activeBoard, onClick }) => (
 Board.propTypes = {
   squares: PropTypes.array.isRequired,
   activeBoard: PropTypes.number.isRequired,
+  boardWon: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired
 };
 

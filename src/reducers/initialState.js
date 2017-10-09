@@ -23,6 +23,7 @@ export default {
     board: createBoard(),
     play: '',
     player: 'X',
-    activeBoard: 1
+    activeBoard: 1,
+    largeBoard: ['', '', '', '', '', '', '', '', '']
   }
 };
