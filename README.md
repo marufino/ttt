@@ -1,1 +1,1 @@
-Migrating the Latas Dashboard to make use of React-Redux concepts
+Tic Tac Toe React-Native app
